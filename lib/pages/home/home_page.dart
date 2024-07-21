@@ -42,6 +42,11 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor
           ),
+          BottomNavigationBarItem(
+            label: "",
+            icon: Icon(Icons.abc),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor
+          ),
         ],
       ),
     );

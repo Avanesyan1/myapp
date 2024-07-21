@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:shopping_app/global/const.dart';
+import 'package:MyApp/global/const.dart';
 
 class MyProfileIconButton extends StatelessWidget {
   String text;

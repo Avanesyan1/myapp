@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/global/const.dart';
+import 'package:MyApp/global/const.dart';
 
 class MyIconButton extends StatelessWidget {
   String image_path;

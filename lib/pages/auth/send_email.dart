@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/generated/l10n.dart';
-import 'package:shopping_app/global/const.dart';
-import 'package:shopping_app/widget/button.dart';
+import 'package:MyApp/generated/l10n.dart';
+import 'package:MyApp/global/const.dart';
+import 'package:MyApp/widget/button.dart';
 
 class SendEmailPage extends StatelessWidget {
     SendEmailPage({super.key});
@@ -31,7 +31,7 @@ class SendEmailPage extends StatelessWidget {
                     color: primary, 
                     borderColor: primary,
                     onTap: (){
-                      context.go('/');
+                      context.go('/signin_main');
                     }
                   )
                 ]

@@ -1,16 +1,21 @@
+import 'package:MyApp/pages/auth/signin.dart';
+import 'package:MyApp/pages/authCheck.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/pages/auth/forgot_password.dart';
-import 'package:shopping_app/pages/auth/send_email.dart';
-import 'package:shopping_app/pages/auth/signin.dart';
-import 'package:shopping_app/pages/auth/signin_main.dart';
-import 'package:shopping_app/pages/auth/signup.dart';
-import 'package:shopping_app/pages/home_page.dart';
+import 'package:MyApp/pages/auth/forgot_password.dart';
+import 'package:MyApp/pages/auth/send_email.dart';
+import 'package:MyApp/pages/auth/signin_main.dart';
+import 'package:MyApp/pages/auth/signup.dart';
+import 'package:MyApp/pages/home/home_page.dart';
 
 class MyAppRouter {
   GoRouter router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
+        builder: (context, state) => AuthCheck(),
+      ),
+      GoRoute(
+        path: '/signin_main',
         builder: (context, state) => SigninMainPage(),
       ),
       GoRoute(

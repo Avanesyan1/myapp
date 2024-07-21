@@ -1,19 +1,22 @@
+import 'package:MyApp/blocs/auth/auth_bloc.dart';
+import 'package:MyApp/repositories/auth_repository.dart';
+import 'package:MyApp/repositories/cloud_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
-import 'package:shopping_app/firebase_options.dart';
-import 'package:shopping_app/generated/l10n.dart';
-import 'package:shopping_app/router/router.dart';
-import 'package:shopping_app/services/auth.dart';
-import 'package:shopping_app/services/cloud.dart';
-import 'package:shopping_app/theme/theme.dart';
+import 'package:MyApp/firebase_options.dart';
+import 'package:MyApp/generated/l10n.dart';
+import 'package:MyApp/router/router.dart';
+import 'package:MyApp/theme/theme.dart';
 
 void main() async{
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+  
   runApp( MyApp());
 }
 
@@ -22,26 +25,17 @@ class MyApp extends StatelessWidget {
 
   // theme 
   final MyTheme theme = MyTheme();
+
+  // router 
   final MyAppRouter myAppRouter = MyAppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<CloudProvider>(
-          create: (_) => CloudProvider(),
+    return BlocProvider<AuthBloc>(
+      create: (context) => AuthBloc(
+        authRepository: AuthRepository(),
+        cloudRepository: CloudRepository()
         ),
-        ChangeNotifierProvider<AuthenticationProvider>(
-          create: (_) => AuthenticationProvider(),
-        ),
-        ChangeNotifierProvider<ApplicationUser>(
-          create: (_) => ApplicationUser()
-        ),
-        ChangeNotifierProvider<EmailProvider>(
-          create: (_) => EmailProvider()
-        ),
-      ],
-
       child: MaterialApp.router(
         localizationsDelegates: [
           S   .delegate,

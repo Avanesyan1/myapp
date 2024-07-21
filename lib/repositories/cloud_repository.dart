@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
-class CloudProvider extends ChangeNotifier {
+class CloudRepository{
   final FirebaseFirestore _cloud = FirebaseFirestore.instance;
 
   Future<void> saveProfileData(String? userId, String firstname, String secondname, String email, String phoneNumber) async {
@@ -11,7 +10,6 @@ class CloudProvider extends ChangeNotifier {
       'phone_number': phoneNumber,
       'email': email,
     });
-    notifyListeners();
   }
 
   Future<Map<String, dynamic>?> getProfileData(String? userId) async {
@@ -25,8 +23,6 @@ class CloudProvider extends ChangeNotifier {
     } catch (e) {
       print(e);
       return null;
-    } finally {
-      notifyListeners();
     }
   }
 }

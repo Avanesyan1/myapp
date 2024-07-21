@@ -1,9 +1,9 @@
+import 'package:MyApp/blocs/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:MyApp/generated/l10n.dart';
 import 'package:MyApp/global/const.dart';
-import 'package:MyApp/services/auth.dart';
 import 'package:MyApp/widget/bottomErrorSheet.dart';
 import 'package:MyApp/widget/button.dart';
 import 'package:MyApp/widget/textfield.dart';
@@ -16,7 +16,6 @@ class ForgotPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final _authProvider =  Provider.of<AuthenticationProvider>(context);
     
     return SafeArea(
       child: Scaffold(
@@ -69,8 +68,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   onTap: (){
                     if (emailController.text.isNotEmpty) {
                       try {
-                        _authProvider.resetPassword(emailController.text);
-                        context.go('/send_emai;');
+                        context.read<AuthBloc>().add(AuthResetPasswordRequested(email: emailController.text));
+                        context.go('/send_email');
                       } catch (e) {
                         bottomErrorSheet.showError(context, S.of(context).pleaseInputCorrectEmail);
                         Future.delayed(Duration(seconds: 3), () {

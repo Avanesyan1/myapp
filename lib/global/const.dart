@@ -20,6 +20,7 @@ FontWeight w500 = FontWeight.w500;
 FontWeight w600 = FontWeight.w600;
 
 //padding
+EdgeInsets a2 = const EdgeInsets.all(2);
 EdgeInsets a8 = const EdgeInsets.all(8);
 EdgeInsets a16 = const EdgeInsets.all(16);
 EdgeInsets l16 = const EdgeInsets.only(left: 16);

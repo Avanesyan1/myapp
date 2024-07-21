@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/generated/l10n.dart';
+import 'package:MyApp/generated/l10n.dart';
 
 class bottomErrorSheet {
   static void showError(BuildContext context, String message) {
